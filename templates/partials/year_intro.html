@@ -1,0 +1,66 @@
+<!-- Year Introduction Section -->
+<div class="year-intro-section mb-12">
+  <!-- Year Buttons -->
+  <div class="time-travel-container mb-8">
+    <button 
+      class="year-btn active" 
+      data-year="2025"
+      onclick="showYearIntro('2025')"
+    >
+      2025
+    </button>
+    <button 
+      class="year-btn" 
+      data-year="2024"
+      onclick="showYearIntro('2024')"
+    >
+      2024
+    </button>
+  </div>
+
+  <!-- Year Introduction Content -->
+  <div class="year-content">
+    <!-- 2025 Introduction (Default) -->
+    <div id="intro-2025" class="year-intro active">
+      <div class="intro-text text-center">
+        <p>I’m Prathamesh. Gave my 10th boards this year, scored 86.4% with no coaching. Just smart work.</p>
+        <p>After that, chilled with Minecraft, then got deep into copywriting and growth. Wrote two books. Obsessed with to-do lists.</p>
+        <p>Started a dev agency (tmux.io). No clients, but learned a lot. Smashed my phone in a fight, never replaced it. More peace since.</p>
+        <p>Now building Nexttap, a productivity app based on how I work. 3+ months in. No earnings yet.</p>
+        <p>Goal: $500/month and crack a free CS college. Still figuring it out. But I’m all in.</p>
+      </div>
+    </div>
+
+    <!-- 2024 Introduction -->
+    <div id="intro-2024" class="year-intro">
+      <div class="intro-text text-center">
+        <p>I'm Prathamesh, and I just want to build businesses that let me take care of my parents and live free.</p>
+        <p>Started out wanting a Minecraft account. Ended up making my first $160 online at 16 through YouTube automation.</p>
+        <p>Tried trading, dropshipping, affiliate, copywriting. failed at most. Shiny object syndrome every week. But I kept moving.</p>
+        <p>Now I'm focused. Want to live on farmland, earn from my laptop, lift some weights, and talk to billionaires online once in a while.</p>
+        <p>This is just the start.</p>
+        <p class="revenue-stats"><em style="color: #0077FF;">(Revenue: $160/year | Profit margin: 100%)</em></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showYearIntro(year) {
+  // Hide all year intros
+  document.querySelectorAll('.year-intro').forEach(intro => {
+    intro.classList.remove('active');
+  });
+  
+  // Remove active class from all buttons
+  document.querySelectorAll('.year-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Show selected year intro
+  document.getElementById('intro-' + year).classList.add('active');
+  
+  // Add active class to clicked button
+  document.querySelector('[data-year="' + year + '"]').classList.add('active');
+}
+</script>

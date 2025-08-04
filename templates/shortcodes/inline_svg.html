@@ -1,0 +1,27 @@
+{% set img = body | trim_start_matches(pat="![") | trim_end_matches(pat=")") | split(pat="](") %}<!---->
+{% set alt = img | first() %}<!---->
+{% set src = img | last() %}<!---->
+{% set ignore_names = ["inline svg", "inline-svg", "inline_svg"] %}<!---->
+
+{% if page.relative_path %}
+  {% set current_path = page.relative_path %}
+{% elif section.relative_path %}
+  {% set current_path = section.relative_path %}
+{% else %}
+  {% set current_path = "" %}
+{% endif %}
+
+{% set page_dir = current_path | split(pat="/") | slice(end=-1) | join(sep="/") %}
+
+{% if page_dir %}
+  {% set full_path = "content/" ~ page_dir ~ "/" ~ src %}
+{% else %}
+  {% set full_path = "content/" ~ src %}
+{% endif %}
+
+<figure class="inline-svg">
+  {{ load_data(path=full_path) | safe}}<!---->
+  {% if alt and not ignore_names is containing(alt | lower) %}
+  <figcaption>{{ alt }}</figcaption>
+  {% endif %}
+</figure>

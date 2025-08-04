@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Dark mode only - no light mode */
+
+/* Apply modern system font stack globally */
+* {
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+html,
+body {
+  @apply h-full;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+html {
+  --bg: #000000;
+  --bg-dark: #000000;
+  --header: #000000;
+  --header-dark: #000000;
+  --accent-primary: #0077FF;
+  --accent-hover: #0066DD;
+  --accent-light: #3399FF;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  background: #000000;
+}
+
+.not-ready * {
+  @apply transition-none!;
+}
+
+article {
+  @apply text-lg;
+
+  /* Auto direction for text */
+  *,
+  ::before,
+  ::after {
+    unicode-bidi: plaintext;
+  }
+
+  /* Links with accent color */
+  a:not([class]) {
+    color: var(--accent-primary);
+    @apply transition-colors duration-200;
+    
+    &:hover {
+      color: var(--accent-hover);
+    }
+  }
+
+  /* Footnote */
+  .footnote-definition {
+    @apply flex;
+
+    p {
+      @apply m-0;
+    }
+
+    .footnote-definition-label {
+      @apply static mr-2 text-base;
+
+      &::after {
+        @apply content-['.'];
+      }
+    }
+  }
+
+  /* Code block */
+  pre {
+    @apply text-base;
+
+    mark {
+      @apply mx-[-18px] my-0 block px-[18px] py-0 text-inherit;
+      background-color: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+    }
+
+    table {
+      @apply m-0 w-full border-collapse text-base;
+
+      tr {
+        @apply border-0 border-none;
+      }
+
+      td {
+        @apply p-0;
+
+        &:nth-of-type(1) {
+          @apply min-w-4 select-none;
+          mark {
+            @apply mr-0 pr-0;
+          }
+        }
+
+        &:not(:nth-of-type(1)) {
+          mark {
+            @apply ml-0 pl-0;
+          }
+        }
+      }
+    }
+  }
+
+  /* Figure */
+  figure {
+    @apply max-w-full;
+
+    svg {
+      @apply h-auto max-w-full scheme-light! dark:scheme-dark!;
+    }
+  }
+}
+
+.header {
+  background-color: #000000;
+}
+
+.btn-menu {
+  &::before,
+  &::after {
+    @apply block h-[2px] w-5 bg-white duration-200 content-[''];
+  }
+
+  &:where(.open *) {
+    &::before {
+      @apply w-6 translate-y-[5.5px] rotate-45;
+    }
+
+    &::after {
+      @apply w-6 -translate-y-[5.5px] -rotate-45;
+    }
+  }
+}
+
+.nav-wrapper {
+  @apply hidden lg:flex;
+
+  &:where(.open *) {
+    @apply flex;
+  }
+}
+
+@utility blur-header {
+  @apply bg-black/80 backdrop-blur;
+}
+
+@utility block-bg {
+  @apply bg-white/[8%];
+}
+
+@utility block-hover {
+  @apply hover:bg-white/[12%];
+}
+
+@utility block-hover-mask {
+  @apply hover:bg-white/[5%];
+}
+
+@utility primary-link {
+  @apply text-white no-underline hover:opacity-80;
+}
+
+@utility accent-link {
+  color: var(--accent-primary);
+  @apply no-underline transition-colors duration-200;
+  
+  &:hover {
+    color: var(--accent-hover);
+  }
+}
+
+@utility secondary-link {
+  @apply text-white/70 no-underline hover:text-white;
+}
+
+@utility accent-highlight {
+  background-color: var(--accent-primary);
+  @apply text-white;
+}
+
+@utility accent-border {
+  border-color: var(--accent-primary);
+}
+
+@utility accent-text {
+  color: var(--accent-primary);
+}
+
+@utility link {
+  color: var(--accent-primary);
+  @apply no-underline transition-colors duration-200;
+  
+  &:hover {
+    color: var(--accent-hover);
+  }
+}
+
+@utility site-title {
+  @apply text-white no-underline hover:opacity-80;
+}
+
+@utility nav-text {
+  @apply text-white;
+}
+
+@utility content-text {
+  @apply text-white;
+}
+
+/* Enhanced blue accent styling */
+h1, h2, h3, h4, h5, h6 {
+  color: #0077FF !important;
+}
+
+.site-title {
+  color: #0077FF !important;
+}
+
+/* Make post titles blue */
+section h2 {
+  color: #0077FF !important;
+}
+
+/* Ensure all backgrounds are black */
+html, body {
+  background-color: #000000 !important;
+}
+
+.header {
+  background-color: #000000 !important;
+}
+
+.block-bg {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.block-hover:hover {
+  background-color: rgba(0, 119, 255, 0.1) !important;
+}
